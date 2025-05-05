@@ -35,31 +35,128 @@
     </nav>
 
     <!-- Hero Section -->
-    <header class="hero" id="home">
-        <div class="container">
-            <div class="hero-content">
-                <h1 class="hero-title">Snacks Faster Than You Can Say ‘I’m Hungry!</h1>
-                <p class="hero-subtitle">Indulge in authentic snacks like medu vada, jalebi, and pani puri, delivered fresh to your door.</p>
-                <a href="#products" class="cta-btn">Explore Our Snacks</a>
-                <div class="delivery-check">
-                    <div class="delivery-input">
-                        <input type="text" id="pincode-input" placeholder="Enter your pin code" maxlength="6">
-                        <button id="check-delivery">Check Delivery</button>
-                    </div>
-                    <div class="delivery-message">
-                        <span id="delivery-icon"></span>
-                        <span id="delivery-text">Check if we deliver to your area</span>
-                    </div>
+    <!-- Updated Hero Section for SnackBazaar -->
+<header class="hero" id="home">
+    <div class="container hero-wrapper">
+        <div class="hero-text">
+            <h1 class="hero-title">Snacks Delivered Fresh & Fast!</h1>
+            <p class="hero-subtitle">Treat yourself to mouthwatering Indian snacks like vada, jalebi, and pani puri—delivered right to your door!</p>
+            <a href="#products" class="cta-btn">Browse Our Snacks</a>
+            <div class="delivery-check">
+                <div class="delivery-input">
+                    <input type="text" id="pincode-input" placeholder="Enter your pin code" maxlength="6">
+                    <button id="check-delivery">Check</button>
+                </div>
+                <div class="delivery-message">
+                    <span id="delivery-icon"></span>
+                    <span id="delivery-text">Check delivery availability</span>
                 </div>
             </div>
         </div>
-        <div class="hero-scroll">
-            <p class="scroll-text">Scroll Down</p>
-            <div class="scroll-icon">
-                <i class="fas fa-chevron-down"></i>
-            </div>
+        <div class="hero-img">
+            <img src="hero-snacks.png" alt="Delicious Indian Snacks">
         </div>
-    </header>
+    </div>
+    <div class="hero-scroll">
+        <p class="scroll-text">Scroll Down</p>
+        <div class="scroll-icon">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </div>
+</header>
+
+<style>
+.hero {
+    background: linear-gradient(135deg, #fff8f0, #ffe7e0);
+    padding: 80px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hero-text {
+    flex: 1 1 50%;
+    max-width: 600px;
+}
+
+.hero-img {
+    flex: 1 1 40%;
+    text-align: center;
+}
+
+.hero-img img {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 1rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.hero-title {
+    font-size: 2.8rem;
+    color: #e8505b;
+    margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 2rem;
+}
+
+.cta-btn {
+    background-color: #ff7e67;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+.cta-btn:hover {
+    background-color: #e8505b;
+}
+
+.delivery-input input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 150px;
+}
+
+.delivery-input button {
+    margin-left: 10px;
+    padding: 10px 20px;
+    background-color: #e8505b;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .hero-wrapper {
+        flex-direction: column-reverse;
+        text-align: center;
+    }
+
+    .hero-text, .hero-img {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+    }
+}
+</style>
+
 
     <!-- Featured Products -->
     <section class="featured-products" id="products">
