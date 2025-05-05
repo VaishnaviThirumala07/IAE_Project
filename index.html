@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SnackBazaar | Authentic Indian Snacks Delivered</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container navbar-content">
+            <a href="#" class="logo">SnackBazaar</a>
+            <ul class="nav-links">
+                <li><a href="#" class="nav-link">Home</a></li>
+                <li><a href="#products" class="nav-link">Products</a></li>
+                <li><a href="#about" class="nav-link">About Us</a></li>
+                <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li><a href="tracking.html" class="nav-link">Track Order</a></li>
+                <li><a href="login.html" class="nav-link">Login</a></li>
+                <li><a href="signup.html" class="nav-link">Sign Up</a></li>
+                <div class="close-menu"><i class="fas fa-times"></i></div>
+            </ul>
+            <div class="cart-icon">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count">0</span>
+            </div>
+            <button class="hamburger">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Snacks Faster Than You Can Say ‘I’m Hungry!</h1>
+                <p class="hero-subtitle">Indulge in authentic snacks like medu vada, jalebi, and pani puri, delivered fresh to your door.</p>
+                <a href="#products" class="cta-btn">Explore Our Snacks</a>
+                <div class="delivery-check">
+                    <div class="delivery-input">
+                        <input type="text" id="pincode-input" placeholder="Enter your pin code" maxlength="6">
+                        <button id="check-delivery">Check Delivery</button>
+                    </div>
+                    <div class="delivery-message">
+                        <span id="delivery-icon"></span>
+                        <span id="delivery-text">Check if we deliver to your area</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <p class="scroll-text">Scroll Down</p>
+            <div class="scroll-icon">
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Featured Products -->
+    <section class="featured-products" id="products">
+        <div class="container">
+            <h2 class="section-title">Our Featured Snacks</h2>
+            <div class="product-filters">
+                <div class="search-bar">
+                    <input type="text" id="product-search" placeholder="Search snacks...">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="category-filters">
+                    <button class="filter-btn active" data-category="all">All Snacks</button>
+                    <button class="filter-btn" data-category="fried">Fried Snacks</button>
+                    <button class="filter-btn" data-category="baked">Baked Snacks</button>
+                    <button class="filter-btn" data-category="namkeen">Namkeen</button>
+                    <button class="filter-btn" data-category="sweet">Sweet Snacks</button>
+                    <button class="filter-btn" data-category="street">Street Food</button>
+                </div>
+                <button class="build-combo-btn">Build Your Combo</button>
+            </div>
+            <div class="products-container">
+                <!-- Fried Snacks -->
+                <div class="product-card" data-category="fried">
+                    <div class="product-img-container">
+                        <img src="meduvada.jpeg" alt="Medu Vada" class="product-img">
+                        <span class="product-badge">Bestseller</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Medu Vada</h3>
+                        <p class="product-price">₹50</p>
+                        <p class="product-description">Savory donut-shaped fritter made from urad dal, perfect for a crispy snack.</p>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card" data-category="fried">
+                    <div class="product-img-container">
+                        <img src="murukku.jpeg" alt="Murukku" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Murukku</h3>
+                        <p class="product-price">₹80</p>
+                        <p class="product-description">Rice flour and lentil spiral snack, a South Indian favorite.</p>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card" data-category="fried">
+                    <div class="product-img-container">
+                        <img src="bananachips.jpeg" alt="Banana Chips" class="product-img">
+                        <span class="product-badge">Popular</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Banana Chips</h3>
+                        <p class="product-price">₹120</p>
+                        <p class="product-description">Thinly sliced, deep-fried banana crisps with a touch of salt.</p>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card" data-category="fried">
+                    <div class="product-img-container">
+                        <img src="samosa.jpeg" alt="Samosa" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Samosa</h3>
+                        <p class="product-price">₹30</p>
+                        <p class="product-description">Spiced potato-filled triangular pastry, a North Indian classic.</p>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card" data-category="fried">
+                    <div class="product-img-container">
+                        <img src="paneerpakora.jpeg" alt="Paneer Pakora" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Paneer Pakora</h3>
+                        <p class="product-price">₹140</p>
+                        <p class="product-description">Gram flour-coated fried paneer cubes, crispy and delicious.</p>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card" data-category="fried">
+                    <div class="product-img-container">
+                        <img src="kachori.jpeg" alt="Kachori" class="product-img">
+                        <span class="product-badge">New</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Kachori</h3>
+                        <p class="product-price">₹25</p>
+                        <p class="product-description">Deep-fried disc with spicy lentil or onion filling.</p>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+                <!-- Baked Snacks -->
+                <div class="product-card" data-category="baked">
+                    <div class="product-img-container">
+                        <img src="thattai.jpeg" alt="Baked Thattai" class="product-img">
+                        <span class="product-badge">Healthy</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Baked Thattai</h3>
+                        <p class="product-price">₹80</p>
+                        <p class="product-description">Crisp rice flour discs baked for a healthier South Indian snack.</p>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card" data-category="baked">
+                    <div class="product-img-container">
+                        <img src="khakra.jpeg" alt="Baked Khakhra" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Baked Khakhra</h3>
+                        <p class="product-price">₹100</p>
+                        <p class="product-description">Crisp Gujarati-style baked wheat crackers, spiced to perfection.</p>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card" data-category="baked">
+                    <div class="product-img-container">
+                        <img src="ragichips.jpeg" alt="Ragi Chips" class="product-img">
+                        <span class="product-badge">Healthy</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Ragi Chips</h3>
+                        <p class="product-price">₹150</p>
+                        <p class="product-description">Baked finger millet chips with a spicy masala flavor, guilt-free snacking.</p>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card" data-category="baked">
+                    <div class="product-img-container">
+                        <img src="bakedsamosa.jpeg" alt="Baked Samosa" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Baked Samosa</h3>
+                        <p class="product-price">₹40</p>
+                        <p class="product-description">Oven-cooked samosa with spiced potato filling, a healthier North Indian treat.</p>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card" data-category="baked">
+                    <div class="product-img-container">
+                        <img src="mathri.jpeg" alt="Baked Mathri" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Baked Mathri</h3>
+                        <p class="product-price">₹50</p>
+                        <p class="product-description">Spiced, flaky wheat crackers baked for a lighter North Indian snack.</p>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card" data-category="baked">
+                    <div class="product-img-container">
+                        <img src="masalabreadsticks.jpeg" alt="Masala Breadsticks" class="product-img">
+                        <span class="product-badge">New</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Masala Breadsticks</h3>
+                        <p class="product-price">₹65</p>
+                        <p class="product-description">North Indian masala-flavored baked breadsticks, perfect for snacking.</p>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+                <!-- Namkeen -->
+                <div class="product-card" data-category="namkeen">
+                    <div class="product-img-container">
+                        <img src="mixture.jpeg" alt="Mixture" class="product-img">
+                        <span class="product-badge">Popular</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Mixture</h3>
+                        <p class="product-price">₹45</p>
+                        <p class="product-description">Southern-style namkeen with boondi, nuts, and curry leaves.</p>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card" data-category="namkeen">
+                    <div class="product-img-container">
+                        <img src="omapodi.jpg" alt="Omapodi" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Omapodi</h3>
+                        <p class="product-price">₹80</p>
+                        <p class="product-description">Spiced sev made with ajwain, a South Indian savory delight.</p>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card" data-category="namkeen">
+                    <div class="product-img-container">
+                        <img src="sundal.jpeg" alt="Sundal" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Sundal</h3>
+                        <p class="product-price">₹50</p>
+                        <p class="product-description">Stir-fried legumes with mustard, curry leaves, and coconut.</p>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card" data-category="namkeen">
+                    <div class="product-img-container">
+                        <img src="aloobhujiya.jpeg" alt="Aloo Bhujia" class="product-img">
+                        <span class="product-badge">Popular</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Aloo Bhujia</h3>
+                        <p class="product-price">₹20</p>
+                        <p class="product-description">Spicy potato-based sev, a classic North Indian namkeen.</p>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card" data-category="namkeen">
+                    <div class="product-img-container">
+                        <img src="chivda.jpeg" alt="Chivda" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Chivda</h3>
+                        <p class="product-price">₹85</p>
+                        <p class="product-description">Spiced poha mix with peanuts, a light and crunchy snack.</p>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card" data-category="namkeen">
+                    <div class="product-img-container">
+                        <img src="moongdal.jpeg" alt="Moong Dal" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Moong Dal</h3>
+                        <p class="product-price">₹40</p>
+                        <p class="product-description">Salted, fried split moong beans, a North Indian favorite.</p>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+                <!-- Sweet Snacks -->
+                <div class="product-card" data-category="sweet">
+                    <div class="product-img-container">
+                        <img src="mysorepak.jpeg" alt="Mysore Pak" class="product-img">
+                        <span class="product-badge">New</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Mysore Pak</h3>
+                        <p class="product-price">₹200 </p>
+                        <p class="product-description">Ghee-rich chickpea flour sweet, a melt-in-the-mouth South Indian delight.</p>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card" data-category="sweet">
+                    <div class="product-img-container">
+                        <img src="adirasam.jpeg" alt="Adirasam" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Adirasam</h3>
+                        <p class="product-price">₹150 </p>
+                        <p class="product-description">Deep-fried rice flour and jaggery sweet, a South Indian festive treat.</p>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card" data-category="sweet">
+                    <div class="product-img-container">
+                        <img src="kozhukattai.jpeg" alt="Kozhukattai" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Kozhukattai</h3>
+                        <p class="product-price">₹160</p>
+                        <p class="product-description">Steamed rice dumpling with sweet coconut-jaggery filling.</p>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card" data-category="sweet">
+                    <div class="product-img-container">
+                        <img src="jalebi.jpeg" alt="Jalebi" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Jalebi</h3>
+                        <p class="product-price">₹140</p>
+                        <p class="product-description">Syrupy deep-fried spirals, a sweet North Indian favorite.</p>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card" data-category="sweet">
+                    <div class="product-img-container">
+                        <img src="gujiya.jpeg" alt="Gujiya" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Gujiya</h3>
+                        <p class="product-price">₹160</p>
+                        <p class="product-description">Deep-fried dumpling with khoya and dry fruit, a North Indian festive sweet.</p>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card" data-category="sweet">
+                    <div class="product-img-container">
+                        <img src="besan ladoo.jpeg" alt="Besan Ladoo" class="product-img">
+                        <span class="product-badge">Bestseller</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Besan Ladoo</h3>
+                        <p class="product-price">₹189</p>
+                        <p class="product-description">Round sweet made from gram flour and ghee, a North Indian classic.</p>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+                <!-- Street Food -->
+                <div class="product-card" data-category="street">
+                    <div class="product-img-container">
+                        <img src="sundalchaat.jpeg" alt="Sundal Chaat" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Sundal Chaat</h3>
+                        <p class="product-price">₹70</p>
+                        <p class="product-description">Chickpea or moong-based tangy South Indian salad with chutneys.</p>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card" data-category="street">
+                    <div class="product-img-container">
+                        <img src="idlichaat.jpeg" alt="Idli Chaat" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Idli Chaat</h3>
+                        <p class="product-price">₹50</p>
+                        <p class="product-description">Masala-spiced cut idlis with chutneys, a South Indian street food twist.</p>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card" data-category="street">
+                    <div class="product-img-container">
+                        <img src="vadapav.jpeg" alt="Vada Pav" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Vada Pav</h3>
+                        <p class="product-price">₹50</p>
+                        <p class="product-description">Spicy potato vada in a bun, a South Indian and Mumbai favorite.</p>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card" data-category="street">
+                    <div class="product-img-container">
+                        <img src="panipuri.jpeg" alt="Pani Puri" class="product-img">
+                        <span class="product-badge">Popular</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Pani Puri Kit</h3>
+                        <p class="product-price">₹60</p>
+                        <p class="product-description">Crispy puris with spicy tamarind water and fillings for a North Indian street food experience.</p>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card" data-category="street">
+                    <div class="product-img-container">
+                        <img src="alootikkichaat.jpeg" alt="Aloo Tikki Chaat" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Aloo Tikki Chaat</h3>
+                        <p class="product-price">₹59</p>
+                        <p class="product-description">Mashed potato patties with curd and chutneys, a North Indian street food delight.</p>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card" data-category="street">
+                    <div class="product-img-container">
+                        <img src="pavbhaji.jpeg" alt="Pav Bhaji" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Pav Bhaji</h3>
+                        <p class="product-price">₹55</p>
+                        <p class="product-description">Spicy mashed veggie curry with buttered buns, a North Indian street food classic.</p>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why-choose-us" id="about">
+        <div class="container">
+            <h2 class="section-title">Why Choose Us?</h2>
+            <div class="features-grid">
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3 class="feature-title">Authentic Recipes</h3>
+                    <p class="feature-text">Our snacks are crafted with traditional Indian recipes for an authentic taste.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-box"></i>
+                    </div>
+                    <h3 class="feature-title">Custom Snack Combos</h3>
+                    <p class="feature-text">Build your own snack box by mixing items like medu vada, ragi chips, and jalebi across regions.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Live Order Tracking</h3>
+                    <p class="feature-text">Track your snack order in real-time from our kitchen to your doorstep.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3 class="feature-title">Health-Conscious</h3>
+                    <p class="feature-text">Baked and low-oil options like ragi chips cater to health-conscious snackers.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-ban"></i>
+                    </div>
+                    <h3 class="feature-title">No Preservatives</h3>
+                    <p class="feature-text">Pure, natural snacks free from artificial preservatives and flavors.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-truck-fast"></i>
+                    </div>
+                    <h3 class="feature-title">Fast Delivery</h3>
+                    <p class="feature-text">Free shipping on orders over ₹500 with delivery in 30-60 minutes.</p>
+                </div>
+            </div>
+            <p class="quality-text">At SnackBazaar, we celebrate India’s rich culinary heritage with snacks like samosa, mysore pak, and vada pav. Customize your snack box and track your order live for a delightful experience.</p>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Our Customers Say</h2>
+            <div class="testimonial-container">
+                <div class="testimonial-wrapper">
+                    <div class="testimonial">
+                        <p class="testimonial-quote">The custom snack combo feature is amazing! I mixed medu vada, aloo bhujia, and jalebi for a perfect snack box. Fast delivery too!</p>
+                        <div class="rating">★★★★★</div>
+                        <span class="testimonial-author">- Avinash</span>
+                    </div>
+                    <div class="testimonial">
+                        <p class="testimonial-quote">The ragi chips are a nutritious, tasty twist on traditional namkeen. Live tracking made it easy to know when my order arrived!</p>
+                        <div class="rating">★★★★★</div>
+                        <span class="testimonial-author">- Anamika</span>
+                    </div>
+                    <div class="testimonial">
+                        <p class="testimonial-quote">The jalebi and mysore pak are my go-to for a sweet treat. SnackBazaar’s quick delivery and quality packaging are top-notch!</p>
+                        <div class="rating">★★★★</div>
+                        <span class="testimonial-author">- Priya</span>
+                    </div>
+                    <div class="testimonial">
+                        <p class="testimonial-quote">The pani puri kit brought street food vibes home! The live tracking feature kept me updated every step of the way.</p>
+                        <div class="rating">★★★★★</div>
+                        <span class="testimonial-author">- Rohan</span>
+                    </div>
+                    <div class="testimonial">
+                        <p class="testimonial-quote">The vada pav is authentic and delicious. Building a custom combo with chivda and samosa was so much fun!</p>
+                        <div class="rating">★★★★</div>
+                        <span class="testimonial-author">- Neha</span>
+                    </div>
+                </div>
+                <div class="testimonial-nav">
+                    <button class="testimonial-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+                    <button class="testimonial-btn next-btn"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container">
+            <h2 class="newsletter-title">Join Our Snack Club</h2>
+            <p class="newsletter-text">Subscribe for exclusive offers, new snack launches, and tips for building the perfect snack combo!</p>
+            <form class="newsletter-form">
+                <input type="email" class="newsletter-input" placeholder="Your email address" required>
+                <button type="submit" class="newsletter-btn">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <div class="footer-links">
+                        <a href="#home">Home</a>
+                        <a href="#products">Products</a>
+                        <a href="#about">About Us</a>
+                        <a href="#testimonials">Testimonials</a>
+                        <a href="#contact">Contact</a>
+                        <a href="tracking.html">Track Order</a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <div class="contact-info">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>456 Snack Lane, Mumbai, MH 400001</p>
+                    </div>
+                    <div class="contact-info">
+                        <i class="fas fa-phone"></i>
+                        <p>+91 98765 43210</p>
+                    </div>
+                    <div class="contact-info">
+                        <i class="fas fa-envelope"></i>
+                        <p><a href="mailto:support@snackbazaar.in">support@snackbazaar.in</a></p>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Follow Us</h3>
+                    <p>Stay connected for special offers and live tracking updates!</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>We Accept</h3>
+                    <div class="payment-methods">
+                        <i class="fab fa-cc-visa fa-2x" style="margin-right: 10px;"></i>
+                        <i class="fab fa-cc-mastercard fa-2x" style="margin-right: 10px;"></i>
+                        <i class="fas fa-mobile-alt fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>© 2025 SnackBazaar. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- Cart Notification -->
+    <div class="cart-notification" id="cart-notification">
+        Item added to cart!
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
