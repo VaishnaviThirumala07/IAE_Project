@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SnackBazaar | Build Your Custom Combo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="combo.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container navbar-content">
+            <a href="index.html" class="logo">SnackBazaar</a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="index.html#products" class="nav-link">Products</a></li>
+                <li><a href="index.html#about" class="nav-link">About Us</a></li>
+                <li><a href="index.html#testimonials" class="nav-link">Testimonials</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+                <li><a href="tracking.html" class="nav-link">Track Order</a></li>
+                <li><a href="login.html" class="nav-link">Login</a></li>
+                <li><a href="signup.html" class="nav-link">Sign Up</a></li>
+                <div class="close-menu"><i class="fas fa-times"></i></div>
+            </ul>
+            <div class="cart-icon">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count">0</span>
+            </div>
+            <button class="hamburger">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Combo Builder Section -->
+    <section class="combo-builder">
+        <div class="container">
+            <h2 class="section-title">Build Your Custom Snack Combo</h2>
+            <p class="combo-instructions">Select your favorite snacks from various categories to create your perfect combo. Adjust quantities and add to your cart!</p>
+            <div class="combo-content">
+                <div class="combo-products">
+                    <div class="product-filters">
+                        <div class="search-bar">
+                            <input type="text" id="combo-search" placeholder="Search snacks...">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <div class="category-filters">
+                            <button class="filter-btn active" data-category="all">All Snacks</button>
+                            <button class="filter-btn" data-category="fried">Fried Snacks</button>
+                            <button class="filter-btn" data-category="baked">Baked Snacks</button>
+                            <button class="filter-btn" data-category="namkeen">Namkeen</button>
+                            <button class="filter-btn" data-category="sweet">Sweet Snacks</button>
+                            <button class="filter-btn" data-category="street">Street Food</button>
+                        </div>
+                    </div>
+                    <div class="products-container" id="combo-products">
+                        <!-- Products will be dynamically populated by combo.js -->
+                    </div>
+                </div>
+                <div class="combo-summary">
+                    <h3 class="summary-title">Your Combo</h3>
+                    <div class="summary-items" id="summary-items">
+                        <!-- Selected items will be dynamically populated -->
+                        <p class="empty-message">No items selected yet.</p>
+                    </div>
+                    <div class="summary-total">
+                        <span>Total:</span>
+                        <span id="combo-total">₹0</span>
+                    </div>
+                    <button class="add-combo-to-cart" id="add-combo-to-cart" disabled>Add Combo to Cart</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <div class="footer-links">
+                        <a href="index.html">Home</a>
+                        <a href="index.html#products">Products</a>
+                        <a href="index.html#about">About Us</a>
+                        <a href="index.html#testimonials">Testimonials</a>
+                        <a href="index.html#contact">Contact</a>
+                        <a href="tracking.html">Track Order</a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <div class="contact-info">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>456 Snack Lane, Mumbai, MH 400001</p>
+                    </div>
+                    <div class="contact-info">
+                        <i class="fas fa-phone"></i>
+                        <p>+91 98765 43210</p>
+                    </div>
+                    <div class="contact-info">
+                        <i class="fas fa-envelope"></i>
+                        <p><a href="mailto:support@snackbazaar.com">support@snackbazaar.com</a></p>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Follow Us</h3>
+                    <p>Stay connected for special offers and live tracking updates!</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>We Accept</h3>
+                    <div class="payment-methods">
+                        <i class="fab fa-cc-visa fa-2x" style="margin-right: 10px;"></i>
+                        <i class="fab fa-cc-mastercard fa-2x" style="margin-right: 10px;"></i>
+                        <i class="fas fa-mobile-alt fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>© 2025 SnackBazaar. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- Cart Notification -->
+    <div class="cart-notification" id="cart-notification">
+        Combo added to cart!
+    </div>
+
+    <script src="script.js"></script>
+    <script src="combo.js"></script>
+</body>
+</html>

@@ -176,8 +176,7 @@ if (document.querySelector('.hero')) {
     const buildComboBtn = document.querySelector('.build-combo-btn');
     if (buildComboBtn) {
         buildComboBtn.addEventListener('click', () => {
-            // Placeholder for combo builder (in production, redirect to a dedicated page)
-            alert('Build your custom snack combo! Select from Fried Snacks, Baked Snacks, Namkeen, Sweet Snacks, and Street Food across India.');
+            window.location.href = 'combo.html';
         });
     }
 
