@@ -85,6 +85,7 @@ body {
     list-style: none;
     gap: 1.7rem;
     align-items: center;
+    transition: all 0.3s ease;
 }
 
 .nav-link {
@@ -120,6 +121,16 @@ body {
     border: none;
     color: var(--primary-color);
     font-size: 1.5rem;
+    padding: 0.5rem;
+    z-index: 1001;
+}
+
+.hamburger i {
+    transition: transform 0.3s ease;
+}
+
+.hamburger.active i {
+    transform: rotate(90deg);
 }
 
 /* Hero Section */
@@ -351,6 +362,45 @@ button:hover, .cta-btn:hover, .add-to-cart:hover, .build-combo-btn:hover {
         max-width: 98vw;
         padding: 0 0.7rem;
     }
+    
+    .navbar-content {
+        padding: 0 1rem;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 60px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 60px);
+        background: var(--navbar-color);
+        flex-direction: column;
+        align-items: center;
+        padding: 2rem 0;
+        transition: 0.3s ease;
+        gap: 2rem;
+    }
+
+    .nav-links.active {
+        left: 0;
+    }
+
+    .hamburger {
+        display: block;
+        z-index: 1001;
+    }
+
+    .close-menu {
+        display: block !important;
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        font-size: 1.5rem;
+        color: var(--primary-color);
+        cursor: pointer;
+        z-index: 1001;
+    }
+
     .hero-content {
         max-width: 99vw;
         padding: 1.2rem 0.5rem 1.5rem 0.5rem;
@@ -363,6 +413,21 @@ button:hover, .cta-btn:hover, .add-to-cart:hover, .build-combo-btn:hover {
     }
     .product-card, .feature {
         margin-bottom: 1.5rem;
+    }
+
+    .nav-link {
+        font-size: 1.2rem;
+        padding: 0.8rem 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-link::after {
+        display: none;
+    }
+
+    .cart-icon {
+        margin-left: 1rem;
     }
 }
 
