@@ -1,6 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Get cart from localStorage
-    const cart = JSON.parse(localStorage.getItem('cart')) || [];
     const orderItemsContainer = document.querySelector('.order-items');
     const subtotalElement = document.querySelector('.subtotal');
     const taxElement = document.querySelector('.tax');
@@ -9,14 +7,15 @@ document.addEventListener('DOMContentLoaded', function() {
     const paymentMethods = document.querySelectorAll('.payment-method');
     const paymentDetails = document.querySelectorAll('.payment-details');
     
-    // Update cart count in navbar
     function updateCartCount() {
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
         const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
         document.querySelector('.cart-count').textContent = cartCount;
     }
     
-    // Render order items
     function renderOrderItems() {
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        
         if (cart.length === 0) {
             window.location.href = 'cart.html';
             return;
@@ -25,13 +24,17 @@ document.addEventListener('DOMContentLoaded', function() {
         orderItemsContainer.innerHTML = '';
         
         cart.forEach(item => {
+            const name = item.combo_items ? `Custom Snack Combo (${item.combo_items.map(i => i.name).join(', ')})` : item.name;
+            const price = item.combo_items ? item.combo_items.reduce((sum, i) => sum + i.price * i.quantity, 0) : item.price;
+            const img = item.combo_items ? item.combo_items[0].img : item.image_url;
+            
             const orderItemElement = document.createElement('div');
             orderItemElement.className = 'order-item';
             orderItemElement.innerHTML = `
-                <img src="${item.img}" alt="${item.name}" class="order-item-img">
+                <img src="${img}" alt="${name}" class="order-item-img">
                 <div class="order-item-details">
-                    <h4 class="order-item-title">${item.name}</h4>
-                    <p class="order-item-price">₹${(item.price * item.quantity).toFixed(2)}</p>
+                    <h4 class="order-item-title">${name}</h4>
+                    <p class="order-item-price">₹${(price * item.quantity).toFixed(2)}</p>
                     <p class="order-item-quantity">Qty: ${item.quantity}</p>
                 </div>
             `;
@@ -39,13 +42,15 @@ document.addEventListener('DOMContentLoaded', function() {
             orderItemsContainer.appendChild(orderItemElement);
         });
         
-        updateTotals();
+        updateTotals(cart);
     }
     
-    // Update totals
-    function updateTotals() {
-        const subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
-        const tax = subtotal * 0.18; // 18% GST
+    function updateTotals(cart) {
+        const subtotal = cart.reduce((total, item) => {
+            const price = item.combo_items ? item.combo_items.reduce((sum, i) => sum + i.price * i.quantity, 0) : item.price;
+            return total + (price * item.quantity);
+        }, 0);
+        const tax = subtotal * 0.18;
         const total = subtotal + tax;
         
         subtotalElement.textContent = `₹${subtotal.toFixed(2)}`;
@@ -53,41 +58,54 @@ document.addEventListener('DOMContentLoaded', function() {
         totalElement.textContent = `₹${total.toFixed(2)}`;
     }
     
-    // Payment method selection
     paymentMethods.forEach(method => {
         method.addEventListener('click', function() {
-            // Remove active class from all methods
             paymentMethods.forEach(m => m.classList.remove('active'));
-            // Add active class to clicked method
             this.classList.add('active');
-            
-            // Hide all payment details
             paymentDetails.forEach(detail => detail.style.display = 'none');
-            // Show selected payment details
             const methodName = this.getAttribute('data-method');
             document.getElementById(`${methodName}-details`).style.display = 'block';
         });
     });
     
-    // Form submission
     document.getElementById('checkout-form').addEventListener('submit', function(e) {
         e.preventDefault();
         
-        // Simulate order processing
-        placeOrderBtn.textContent = 'Processing...';
-        placeOrderBtn.disabled = true;
+        const shippingAddress = {
+            firstName: document.getElementById('first-name').value,
+            lastName: document.getElementById('last-name').value,
+            address: document.getElementById('address').value,
+            apartment: document.getElementById('apartment').value,
+            city: document.getElementById('city').value,
+            state: document.getElementById('state').value,
+            pincode: document.getElementById('pincode').value,
+            phone: document.getElementById('phone').value
+        };
         
-        // In a real implementation, you would send the form data to your server
-        setTimeout(() => {
-            // Clear cart
-            localStorage.removeItem('cart');
-            
-            // Redirect to thank you page
-            window.location.href = 'thank-you.html';
-        }, 2000);
+        const paymentMethod = document.querySelector('.payment-method.active').getAttribute('data-method');
+        
+        // Create order object
+        const order = {
+            id: 'ORD' + Date.now(),
+            created_at: new Date().toISOString(),
+            status: 'ordered',
+            shippingAddress,
+            paymentMethod,
+            items: JSON.parse(localStorage.getItem('cart')) || []
+        };
+        
+        // Save order to localStorage
+        const orders = JSON.parse(localStorage.getItem('orders')) || [];
+        orders.push(order);
+        localStorage.setItem('orders', JSON.stringify(orders));
+        
+        // Clear cart
+        localStorage.removeItem('cart');
+        
+        // Redirect to thank you page
+        window.location.href = 'thank-you.html';
     });
     
-    // Initialize
     updateCartCount();
     renderOrderItems();
 });
