@@ -93,24 +93,29 @@ window.addEventListener('load', animateOnScroll);
 window.addEventListener('scroll', animateOnScroll);
 
 document.addEventListener('DOMContentLoaded', function() {
-    const cart = JSON.parse(localStorage.getItem('cart')) || [];
-    
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
     function updateCartCount() {
         const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
         document.querySelector('.cart-count').textContent = cartCount;
     }
-    
+
     // Add to Cart functionality
     document.querySelectorAll('.add-to-cart').forEach(button => {
         button.addEventListener('click', function() {
             const productCard = this.closest('.product-card');
-            const productId = productCard.getAttribute('data-id');
+            // Use data-id for unique product identification
+            let productId = productCard.getAttribute('data-id');
+            if (!productId) {
+                // If not present, generate from name (fallback)
+                productId = productCard.querySelector('.product-title').textContent.trim().replace(/\s+/g, '-').toLowerCase();
+                productCard.setAttribute('data-id', productId);
+            }
             const productName = productCard.querySelector('.product-title').textContent;
             const productPrice = parseFloat(productCard.querySelector('.product-price').textContent.replace('₹', ''));
-            const productImg = productCard.querySelector('.product-img').src;
-            
-            const existingItem = cart.find(item => item.id === productId);
-            
+            const productImg = productCard.querySelector('.product-img').getAttribute('src');
+
+            let existingItem = cart.find(item => item.id === productId);
             if (existingItem) {
                 existingItem.quantity++;
             } else {
@@ -122,19 +127,21 @@ document.addEventListener('DOMContentLoaded', function() {
                     quantity: 1
                 });
             }
-            
             localStorage.setItem('cart', JSON.stringify(cart));
             updateCartCount();
-            
-            // Show success message
-            const successMessage = document.createElement('div');
-            successMessage.className = 'success-message';
-            successMessage.textContent = 'Added to cart!';
-            productCard.appendChild(successMessage);
-            
+
+            // Button feedback only (no appended message)
+            const btn = this;
+            const originalText = btn.textContent;
+            const originalBg = btn.style.backgroundColor;
+            btn.textContent = 'Added!';
+            btn.style.backgroundColor = '#4CAF50';
+            btn.disabled = true;
             setTimeout(() => {
-                successMessage.remove();
-            }, 2000);
+                btn.textContent = originalText;
+                btn.style.backgroundColor = originalBg;
+                btn.disabled = false;
+            }, 1500);
         });
     });
     

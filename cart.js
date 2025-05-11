@@ -16,20 +16,20 @@ document.addEventListener('DOMContentLoaded', function() {
     function renderCart() {
         if (cart.length === 0) {
             emptyCartMessage.style.display = 'block';
+            emptyCartMessage.innerHTML = 'Your cart is empty. <a href="index.html" class="start-shopping-link">Start shopping!</a>';
             checkoutBtn.disabled = true;
+            cartItemsContainer.innerHTML = '';
+            updateTotals();
+            saveCart();
             return;
         }
-        
         emptyCartMessage.style.display = 'none';
         checkoutBtn.disabled = false;
-        
         cartItemsContainer.innerHTML = '';
-        
         cart.forEach(item => {
             const name = item.combo_items ? `Custom Combo (${item.combo_items.map(i => i.name).join(', ')})` : item.name;
             const price = item.combo_items ? item.combo_items.reduce((sum, i) => sum + i.price * i.quantity, 0) : item.price;
-            const img = item.combo_items ? item.combo_items[0].img : item.image_url;
-            
+            const img = item.combo_items ? 'combo.jpeg' : item.image_url;
             const cartItemElement = document.createElement('div');
             cartItemElement.className = 'cart-item';
             cartItemElement.innerHTML = `
@@ -49,10 +49,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                 </div>
             `;
-            
             cartItemsContainer.appendChild(cartItemElement);
         });
-        
         updateTotals();
         saveCart();
     }
@@ -91,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (e.target.classList.contains('remove-item') || e.target.closest('.remove-item')) {
             const button = e.target.classList.contains('remove-item') ? e.target : e.target.closest('.remove-item');
             const id = button.getAttribute('data-id');
-            cart = cart.filter(item => item.id != id);
+            cart = cart.filter(item => String(item.id) !== String(id));
             renderCart();
         }
     });
@@ -120,4 +118,23 @@ document.addEventListener('DOMContentLoaded', function() {
     
     updateCartCount();
     renderCart();
+});
+
+document.querySelectorAll('.add-to-cart').forEach(button => {
+    button.addEventListener('click', function() {
+        // ... (cart logic here)
+
+        // Button feedback only (no appended message)
+        const btn = this;
+        const originalText = btn.textContent;
+        const originalBg = btn.style.backgroundColor;
+        btn.textContent = 'Added!';
+        btn.style.backgroundColor = '#4CAF50';
+        btn.disabled = true;
+        setTimeout(() => {
+            btn.textContent = originalText;
+            btn.style.backgroundColor = originalBg;
+            btn.disabled = false;
+        }, 1000); // 1 second
+    });
 });

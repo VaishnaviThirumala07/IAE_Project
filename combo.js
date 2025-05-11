@@ -450,7 +450,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     searchInput.addEventListener('input', () => {
         const activeFilter = document.querySelector('.filter-btn.active');
-        renderProducts(activeFilter.dataset.category, searchInput.value);
+        const category = activeFilter ? activeFilter.dataset.category : 'all';
+        renderProducts(category, searchInput.value);
     });
     renderProducts();
     renderSummary();
