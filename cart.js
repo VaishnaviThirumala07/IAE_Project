@@ -26,13 +26,17 @@ document.addEventListener('DOMContentLoaded', function() {
         cartItemsContainer.innerHTML = '';
         
         cart.forEach(item => {
+            const name = item.combo_items ? `Custom Combo (${item.combo_items.map(i => i.name).join(', ')})` : item.name;
+            const price = item.combo_items ? item.combo_items.reduce((sum, i) => sum + i.price * i.quantity, 0) : item.price;
+            const img = item.combo_items ? item.combo_items[0].img : item.image_url;
+            
             const cartItemElement = document.createElement('div');
             cartItemElement.className = 'cart-item';
             cartItemElement.innerHTML = `
-                <img src="${item.img}" alt="${item.name}" class="cart-item-img">
+                <img src="${img}" alt="${name}" class="cart-item-img">
                 <div class="cart-item-details">
-                    <h3 class="cart-item-title">${item.name}</h3>
-                    <p class="cart-item-price">₹${item.price.toFixed(2)}</p>
+                    <h3 class="cart-item-title">${name}</h3>
+                    <p class="cart-item-price">₹${price.toFixed(2)}</p>
                     <div class="cart-item-actions">
                         <div class="quantity-control">
                             <button class="quantity-btn minus" data-id="${item.id}">-</button>
@@ -54,7 +58,10 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     function updateTotals() {
-        const subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+        const subtotal = cart.reduce((total, item) => {
+            const price = item.combo_items ? item.combo_items.reduce((sum, i) => sum + i.price * i.quantity, 0) : item.price;
+            return total + (price * item.quantity);
+        }, 0);
         subtotalElement.textContent = `₹${subtotal.toFixed(2)}`;
         totalElement.textContent = `₹${subtotal.toFixed(2)}`;
     }
@@ -104,6 +111,10 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     checkoutBtn.addEventListener('click', function() {
+        if (cart.length === 0) {
+            alert('Your cart is empty!');
+            return;
+        }
         window.location.href = 'checkout.html';
     });
     

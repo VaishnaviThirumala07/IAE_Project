@@ -92,6 +92,94 @@ document.querySelectorAll('.product-card, .feature, .tracking-container').forEac
 window.addEventListener('load', animateOnScroll);
 window.addEventListener('scroll', animateOnScroll);
 
+document.addEventListener('DOMContentLoaded', function() {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    
+    function updateCartCount() {
+        const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+        document.querySelector('.cart-count').textContent = cartCount;
+    }
+    
+    // Add to Cart functionality
+    document.querySelectorAll('.add-to-cart').forEach(button => {
+        button.addEventListener('click', function() {
+            const productCard = this.closest('.product-card');
+            const productId = productCard.getAttribute('data-id');
+            const productName = productCard.querySelector('.product-title').textContent;
+            const productPrice = parseFloat(productCard.querySelector('.product-price').textContent.replace('₹', ''));
+            const productImg = productCard.querySelector('.product-img').src;
+            
+            const existingItem = cart.find(item => item.id === productId);
+            
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                cart.push({
+                    id: productId,
+                    name: productName,
+                    price: productPrice,
+                    image_url: productImg,
+                    quantity: 1
+                });
+            }
+            
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            
+            // Show success message
+            const successMessage = document.createElement('div');
+            successMessage.className = 'success-message';
+            successMessage.textContent = 'Added to cart!';
+            productCard.appendChild(successMessage);
+            
+            setTimeout(() => {
+                successMessage.remove();
+            }, 2000);
+        });
+    });
+    
+    // Newsletter form
+    const newsletterForm = document.querySelector('.newsletter-form');
+    if (newsletterForm) {
+        newsletterForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input[type="email"]').value;
+            
+            // Save email to localStorage
+            const subscribers = JSON.parse(localStorage.getItem('newsletterSubscribers')) || [];
+            if (!subscribers.includes(email)) {
+                subscribers.push(email);
+                localStorage.setItem('newsletterSubscribers', JSON.stringify(subscribers));
+            }
+            
+            alert('Thank you for subscribing to our newsletter!');
+            this.reset();
+        });
+    }
+    
+    // Order tracking
+    const trackOrderForm = document.querySelector('.track-order-form');
+    if (trackOrderForm) {
+        trackOrderForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const orderId = this.querySelector('input[type="text"]').value;
+            
+            // Get orders from localStorage
+            const orders = JSON.parse(localStorage.getItem('orders')) || [];
+            const order = orders.find(o => o.id === orderId);
+            
+            if (order) {
+                alert(`Order Status: ${order.status}\nOrder Date: ${new Date(order.created_at).toLocaleDateString()}`);
+            } else {
+                alert('Order not found. Please check your order ID.');
+            }
+        });
+    }
+    
+    // Initialize cart count
+    updateCartCount();
+});
+
 if (document.querySelector('.hero')) {
     const addToCartButtons = document.querySelectorAll('.add-to-cart');
     addToCartButtons.forEach(button => {
